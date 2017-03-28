@@ -12,7 +12,7 @@ $(function(){
     function init(){
         $(".popup").hide();
 
-        /*creates empty scene object and renderer*/
+        //creates empty scene object and renderer
         scene = new THREE.Scene();
         camera =  new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, .1, 500);
         renderer = new THREE.WebGLRenderer({antialias:true});
@@ -22,7 +22,7 @@ $(function(){
         renderer.shadowMapEnabled= false;
         renderer.shadowMapSoft = false;
 
-        /*add controls*/
+        //dd controls
         controls = new THREE.OrbitControls( camera, renderer.domElement );
         controls.addEventListener( 'change', render );
 
@@ -66,7 +66,7 @@ $(function(){
         hemi = new THREE.HemisphereLight(0xbbbbbb, 0x660066);
         scene.add(hemi);
 
-        /*adds spot light with starting parameters*/
+        //adds spot light with starting parameters
         spotLight = new THREE.SpotLight(0xffffff);
         spotLight.castShadow = false;
         spotLight.position.set (20, 35, 40);
@@ -85,7 +85,7 @@ $(function(){
 
         //load blender scene
         var loader = new THREE.ObjectLoader();
-        loader.load("img/AntikytheraMechanism.json",function ( obj ) {
+        loader.load("img/AntikytheraMechanismUVs.json",function ( obj ) {
 
             scene.add( obj );
 
@@ -103,7 +103,7 @@ $(function(){
         document.addEventListener( 'mousedown', onDocumentMouseDown, false );
         document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 
-        /*adds controls to scene*/
+        //adds controls to scene
         datGUI = new dat.GUI();
         datGUI.add(guiControls, 'SceneToConsole');
 
@@ -150,7 +150,7 @@ $(function(){
         datGUI.close();
 
         $("#webGL-container").append(renderer.domElement);
-        /*stats*/
+        //stats
         stats = new Stats();
         stats.domElement.style.position = 'absolute';
         stats.domElement.style.left = '0px';
