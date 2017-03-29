@@ -10,6 +10,16 @@ Author Tomer Li Ran
         <link rel="shortcut icon" type="image/png" href="img/mechanismWhole.png">
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script>
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        </script>
         <h1 class="center">The Antikythera Mechanism</h1>
         <p class="center"> Click the image below to be taken to the 3D model!</p>
         <div id="banner">
@@ -117,6 +127,6 @@ Author Tomer Li Ran
             <button onclick ="thirdPost();" id="ThirdButton"> Third Post</button>
             <button onclick ="fourthPost();" id="FourthButton"> Fourth Post </button>  
         </div>
-
+        <div class="fb-share-button" data-href="https://tomerliran.github.io/index.html" data-layout="box_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftomerliran.github.io%2Findex.html&amp;src=sdkpreparse">Share</a></div>
     </body>
 </html>
