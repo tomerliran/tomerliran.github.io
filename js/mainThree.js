@@ -1,6 +1,6 @@
 $(function(){
 
-    /*global variables*/
+    //Global variables to be used in the webGL
     var scene, camera, renderer;
     var controls, guiControls, datGUI;
     var stats;
@@ -9,60 +9,63 @@ $(function(){
     var mouse, raycaster;
     var objects = [];
 
+    //function to run all three.js code
     function init(){
-        $(".popup").hide();
+        $(".popup").hide();                        //hiding the popup until a part of the mechanism is clicked.
 
         //creates empty scene object and renderer
         scene = new THREE.Scene();
         camera =  new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, .1, 500);
         renderer = new THREE.WebGLRenderer({antialias:true});
 
+        //set renderer
         renderer.setClearColor(0xEBE0FF);
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.shadowMapEnabled= false;
         renderer.shadowMapSoft = false;
 
-        //dd controls
+        //for the orbit controls (for the camera to move around)
         controls = new THREE.OrbitControls( camera, renderer.domElement );
         controls.addEventListener( 'change', render );
-
+        
+        //set up the camera to look at the scene
         camera.position.x = -2;
         camera.position.y = 4;
         camera.position.z = -9;
         camera.lookAt(scene.position);
 
         // dat.gui so user can adjust lighting and other variables.
-               guiControls = new function(){
-                   this.SceneToConsole= function(){
-                       console.log(scene);
-                       console.log(camera.position.x + " X Position");
-                       console.log(camera.position.y + " Y Position");
-                       console.log(camera.position.z + " Z Position");
-                   };
+        guiControls = new function(){
+            
+           this.SceneToConsole= function(){
+               console.log(scene);
+               console.log(camera.position.x + " X Position");
+               console.log(camera.position.y + " Y Position");
+               console.log(camera.position.z + " Z Position");
+           };
 
-                   this.rotationX  = 0.0;
-                   this.rotationY  = 0.0;
-                   this.rotationZ  = 0.0;
+           this.rotationX  = 0.0;
+           this.rotationY  = 0.0;
+           this.rotationZ  = 0.0;
 
-                   this.lightX = 19;
-                   this.lightY = 47;
-                   this.lightZ = 19;
-                   this.intensity = .5;
-                   this.distance = 373;
-                   this.angle = 1.6;
-                   this.exponent = 38;
-                   this.shadowCameraNear = 34;
-                   this.shadowCameraFar = 2635;
-                   this.shadowCameraFov = 68;
-                   this.shadowCameraVisible=false;
-                   this.shadowMapWidth=512;
-                   this.shadowMapHeight=512;
-                   this.shadowBias=0.00;
-                   this.shadowDarkness=0.11;
+           this.lightX = 19;
+           this.lightY = 47;
+           this.lightZ = 19;
+           this.intensity = .5;
+           this.distance = 373;
+           this.angle = 1.6;
+           this.exponent = 38;
+           this.shadowCameraNear = 34;
+           this.shadowCameraFar = 2635;
+           this.shadowCameraFov = 68;
+           this.shadowCameraVisible=false;
+           this.shadowMapWidth=512;
+           this.shadowMapHeight=512;
+           this.shadowBias=0.00;
+           this.shadowDarkness=0.11;
+       };
 
-               }
-
-        //hemi light
+        //hemi light to add to the scene
         hemi = new THREE.HemisphereLight(0xbbbbbb, 0x660066);
         scene.add(hemi);
 
@@ -83,7 +86,7 @@ $(function(){
         scene.add(spotLight);
 
 
-        //load blender scene
+        //load blender scene using ObjectLoader from three.js
         var loader = new THREE.ObjectLoader();
         loader.load("img/AntikytheraMechanismUVs.json",function ( obj ) {
 
@@ -95,7 +98,7 @@ $(function(){
 
         });
 
-        //add raycaster and mouse as 2D vector
+        //add raycaster and mouse as 2D vector to get the point
         raycaster = new THREE.Raycaster();
         mouse = new THREE.Vector2();
 
@@ -103,7 +106,7 @@ $(function(){
         document.addEventListener( 'mousedown', onDocumentMouseDown, false );
         document.addEventListener( 'touchstart', onDocumentTouchStart, false );
 
-        //adds controls to scene
+        //adds datGUI controls to scene
         datGUI = new dat.GUI();
         datGUI.add(guiControls, 'SceneToConsole');
 
@@ -150,6 +153,7 @@ $(function(){
         datGUI.close();
 
         $("#webGL-container").append(renderer.domElement);
+        
         //stats
         stats = new Stats();
         stats.domElement.style.position = 'absolute';
@@ -158,7 +162,8 @@ $(function(){
         $("#webGL-container").append( stats.domElement );
 
     }
-
+    
+    //to check for the mouse touch
     function onDocumentTouchStart( event ) {
 
         event.preventDefault();
@@ -168,7 +173,8 @@ $(function(){
         onDocumentMouseDown( event );
 
     }
-
+    
+    //find where the raycaster and the mouse or the touch(touch screen) intersect and give a message on what part of the mechanism the user clicked on
     function onDocumentMouseDown( event ) {
 
         event.preventDefault();
@@ -184,21 +190,23 @@ $(function(){
 
             this.name = intersects[ 0 ].object.name;
 
-            $( ".text" ).empty();
-            $( ".popup" ).append( "<div class='text'><p>This part is the <strong>" + this.name  + " of the mechanism </strong></p></div>" );
-            $(".popup").show();
+            $( ".text" ).empty(); //empty the text
+            $( ".popup" ).append( "<div class='text'><p>This part is the <strong>" + this.name  + " of the mechanism </strong></p></div>" );    //get the message to show in the popup
+            $(".popup").show();     //show the above message to the user
 
         }
 
     }
 
+    //render the scene adn light
     function render() {
         spotLight.position.x = guiControls.lightX;
         spotLight.position.y = guiControls.lightY;
         spotLight.position.z = guiControls.lightZ;
         //scene.rotation.y += .001;
     }
-
+    
+    //animate the scene
     function animate(){
         requestAnimationFrame(animate);
         render();
@@ -206,9 +214,10 @@ $(function(){
         renderer.render(scene, camera);
     }
 
-    init();
+    init(); //initialise and animate the code
     animate();
-
+    
+    //resize the screen to the window to make the model viewable across devices
     $(window).resize(function(){
         SCREEN_WIDTH = window.innerWidth;
         SCREEN_HEIGHT = window.innerHeight;
