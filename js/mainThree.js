@@ -88,7 +88,7 @@ $(function(){
 
         //load blender scene using ObjectLoader from three.js
         var loader = new THREE.ObjectLoader();
-        loader.load("img/AntikytheraMechanismOneObject.json",function ( obj ) {
+        loader.load("img/AntikytheraMechanismUVs.json",function ( obj ) {
 
             scene.add( obj );
 
