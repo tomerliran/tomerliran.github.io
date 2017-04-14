@@ -19,7 +19,6 @@ $(function(){
         renderer = new THREE.WebGLRenderer({antialias:true});
 
         //set renderer
-        renderer.setClearColor(0xEBE0FF);
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.shadowMapEnabled= false;
         renderer.shadowMapSoft = false;
@@ -86,17 +85,34 @@ $(function(){
         scene.add(spotLight);
 
 
-        //load blender scene using ObjectLoader from three.js
-        var loader = new THREE.ObjectLoader();
-        loader.load("img/AntikytheraMechanismUVs.json",function ( obj ) {
+        // instantiate a loader
+        var loader = new THREE.JSONLoader();
 
-            scene.add( obj );
-
-            scene.traverse(function(children){
-                objects.push(children);
-            });
-
-        });
+        // load a resource
+        loader.load(
+                // resource URL
+                'img/AntikytheraMechanismOneObject.json',
+                // Function when resource is loaded
+                function ( geometry, materials ) {
+                        var material = new THREE.MultiMaterial( materials );
+                        var object = new THREE.Mesh( geometry, material );
+                        scene.add( object );
+                }
+        );
+        /*
+        loader.load('img/AntikytheraMechanismOneObject.json', function(geometry, materials) {
+        mesh = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+        //mesh.scale.x = x;
+        //mesh.scale.y = y;
+        //mesh.scale.z = z;
+        //mesh.opacity=1;
+        var model = new THREE.Object3D();
+        model.add(mesh);
+        model.position.set(0,0,0);
+        //mesh.translation = THREE.GeometryUtils.center(geometry);
+        group.add(model);
+    });
+*/
 
         //add raycaster and mouse as 2D vector to get the point
         raycaster = new THREE.Raycaster();
