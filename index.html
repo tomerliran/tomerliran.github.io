@@ -101,8 +101,8 @@ Author Tomer Li Ran
                 document.getElementById(t).innerHTML="Scrum Methodology";
                 document.getElementById(b1).innerHTML="1. Gain complete understanding of the Mechanism to reconstruct the model. Sprint lasted 2 weeks. Implement the exterior model. The demo was successful so the release was completed.";
                 document.getElementById(b2).innerHTML="2. Build the actual Antikythera Mechanism. This part will take 1 week as it is not challenging to reconstruct";
-                document.getElementById(b3).innerHTML = "3rd sprint is to develop the web application. Designed my website, wrote my own HTML5, CSS3 and added a few features to the website, for example the FaceBook share button. As planned this sprint lasted for 2 weeks. In retrospective this was much simpler than creating the model and therefore it took only half the time. Had some issues with site structure and a few errors but by using the Chrome Developer Tools option managed to overcome most issues.";
-                document.getElementById(b4).innerHTML ="4th and final sprint of the development process was to add everything together. This part should take 3 weeks. Use three.js to upload model to website and make it interactive. Most challenging part.";
+                document.getElementById(b3).innerHTML = "3. sprint is to develop the web application. Designed my website, wrote my own HTML5, CSS3 and added a few features to the website, for example the FaceBook share button. As planned this sprint lasted for 2 weeks. In retrospective this was much simpler than creating the model and therefore it took only half the time. Had some issues with site structure and a few errors but by using the Chrome Developer Tools option managed to overcome most issues.";
+                document.getElementById(b4).innerHTML ="4. And final sprint of the development process was to add everything together. This part should take 3 weeks. Use three.js to upload model to website and make it interactive. Most challenging part.";
             
             }
             
@@ -120,14 +120,23 @@ Author Tomer Li Ran
                 document.getElementById(b2).innerHTML="Since I'm not so good with graphics anyway and I'm looking to develop webpages as a career, I though that it would be best if I focused on the web building aspect of the project";
                 document.getElementById(b3).innerHTML = "After spending lots of days (even weeks) on w3schools and learning HTML, CSS3 and JavaScript from scratch so as to build my skills from the foundations, I was ready to tackle the web app.";
                 document.getElementById(b4).innerHTML = "After rebuilding my website and adding so much functionality, I can honestly say I feel good about myself and that I'm constantly giving my best self to complete the project!" ;
-            } 
+            }
+            
+            function fifthPost(){
+                document.getElementById(t).innerHTML="Perfecting the website";
+                document.getElementById(b1).innerHTML="Attempted to fix the coloring problem in the model, with a tradeoff of losing the functionality in showing the user the object they have selected";
+                document.getElementById(b2).innerHTML="Added extra videos and document forms in order to make the website as professional as possible. In addition to general fixes of code.";
+                document.getElementById(b3).innerHTML = "Ended up creating a very professional-looking website that is interactive and scaleable for any device.";
+                document.getElementById(b4).innerHTML = "Final improvements would be completely fixing the colour issue and the issue with the names of object in the 3D view. Except for that everything else looks fine. " ;
+            }
             
         </script>     
         <div id="blogButtons">             
             <button onclick="firstPost();" id="FirstButton"> First Post </button>
             <button onclick="secondPost();" id="SecondButton"> Second Post </button>
             <button onclick ="thirdPost();" id="ThirdButton"> Third Post</button>
-            <button onclick ="fourthPost();" id="FourthButton"> Fourth Post </button>  
+            <button onclick ="fourthPost();" id="FourthButton"> Fourth Post </button> 
+            <button onclick ="fifthPost();" id="FifthButton"> Fifth Post </button>
         </div>
         <h2>A short BBC introduction on the Antikythera Mechanism </h2>
         <div id="video">
@@ -139,7 +148,7 @@ Author Tomer Li Ran
            <div class="fb-share-button" data-href="https://tomerliran.github.io/index.html" data-layout="box_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftomerliran.github.io%2Findex.html&amp;src=sdkpreparse">Share</a></div>
         </div>
         
-        <h3> Take a minute to fill out this survey!</h3>
+        <h3> Want to help? Take a minute to fill out this survey!</h3>
         <div id="questionnare">
             <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdH2dd97cu1TLViOyQwO14ZgaeI4HBjSbxZ14g-sw27aU9b6w/viewform?embedded=true" width="700" height="450" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
         </div>

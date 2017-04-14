@@ -50,7 +50,6 @@ h1.center, p.center {
 
 body{
     background-color: whitesmoke;
-    
 }
 
 h2, h3{
@@ -122,5 +121,6 @@ a:hover, a:active {
 
 #facebook, #questionnare {
     text-align: center;
+    padding: 2%;
     
 }
