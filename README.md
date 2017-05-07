@@ -1,3 +1,0 @@
-# MMP-Antikythera-Mechanism
-Major Project
-Antikythera Mechanism MMP Website The Antikythera Mechanism is a project that will develop a web application that will act as a simulation in outreach events. It will help the public with understanding this ancient marvel. The application will try to represent the mechanism in an aesthetic way, present information and simulate the mechanical functions. By using graphics and an interactive webpage, an individual can better understand the application of such an ancient computer, and how advanced it is. The focus will be releasing software and using that as a measure of how the project is advancing. Therefore, an agile approach will be favourable.
