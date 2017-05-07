@@ -21,4 +21,4 @@ The model.html page will not work if run from a local directory (by opening the 
 
 Or simply visit the site that's run on a server already https://tomerliran.github.io/
 
-The website that's already running on the github server (https://tomerliran.github.io/) has not be manipulated since Mid-April to prove the project's integrity and authenticity since this error is appearing. The dates can be seen on the github repository https://github.com/tomerliran/tomerliran.github.io
+The website that's already running on the github server (https://tomerliran.github.io/) has not been manipulated since Mid-April to prove the project's integrity and authenticity since this error is appearing. The dates can be seen on the github repository https://github.com/tomerliran/tomerliran.github.io
